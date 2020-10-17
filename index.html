@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YouTube Infinity | Loop any part of a YouTube video">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://marc.codeberg.page/youtube-infinity">
+    <meta property="og:title" content="YouTube Infinity">
+    <meta property="og:description" content="Loop any part of a YouTube video">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="YouTube Infinity">
+    <meta name="twitter:description" content="Loop any part of a YouTube video">
+
+    <title>YouTube Infinity</title>
+
+    <link rel="icon" href="icons/infinity-black.svg">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="css/pico.classless.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<main class="container" id="container">
+
+    <div id="title">
+        <h1>YouTube <img id="header-image" src="icons/infinity-white.svg" alt="infinity symbol"> Infinity</h1>
+        <small>Loop any part of a YouTube video</small>
+    </div>
+
+    <form id="controls">
+        <label>
+            <strong>YouTube Video URL</strong>
+            <input id="youtube-url"
+                   type="text"
+                   placeholder="https://www.youtube.com/watch?v=y5fwvYICZvY"
+                   value="https://www.youtube.com/watch?v=y5fwvYICZvY"
+                   onkeyup="isUrlInputValid()"
+                   pattern="^(?:https?:\/\/)((?:www\.)|(?:m\.))(?:youtube\.com)\/watch\?v=([a-zA-Z0-9_-]+)"
+            >
+        </label>
+
+        <div id="start-end-controls">
+            <label>
+                <strong>Start loop</strong> <small>(hh:mm:ss)</small>
+                <input id="start"
+                       type="text"
+                       onkeyup="isStartInputValid()"
+                       pattern="(?:(\d{1,2}):)?(\d{2}):(\d{2})"
+                       maxlength="8"
+                       value="02:54"
+                       placeholder="00:00">
+            </label>
+            <label>
+                <strong>End loop</strong> <small>(hh:mm:ss)</small>
+                <input id="end"
+                       type="text"
+                       onkeyup="isEndInputValid()"
+                       pattern="(?:(\d{1,2}):)?(\d{2}):(\d{2})"
+                       maxlength="8"
+                       value="03:05"
+                       placeholder="00:00">
+            </label>
+        </div>
+
+        <input class="btn btn-default" id="submit" type="button" onclick="userUpdateVideo()" value="Play Video">
+    </form>
+
+    <div id="copy-to-clipboard" class="hidden">
+        <small>Click to copy your personalized video link:</small>
+        <img id="clipboard-icon" src="icons/clipboard-copy.svg" alt="copy-to-clipboard icon" data-tooltip="" onclick="copyLink()" >
+    </div>
+
+    <div id="player"></div>
+</main>
+
+<footer>
+    <small>
+        Made by <a href="https://marc.codeberg.page" target="_blank">Marc</a> &#8900;
+        <a href="https://codeberg.org/marc/youtube-infinity" target="_blank">Licensed under AGPL v3</a>
+    </small>
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
