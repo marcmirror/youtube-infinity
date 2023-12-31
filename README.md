@@ -1,3 +1,5 @@
+# This is a read-only mirror of the git repo at https://codeberg.org/marc/youtube-infinity
+
 # YouTube Infinity
 
 A simple, zero dependency, client-side web app that allows looping any part of a YouTube video.
